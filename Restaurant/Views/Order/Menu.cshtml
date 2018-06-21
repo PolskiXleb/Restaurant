@@ -1,0 +1,56 @@
+﻿@using Restaurant.Models
+@model MenuOrder
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "List";
+}
+
+<div>
+    <p></p>
+    <div class="btn-group">
+        @foreach (SortedMenu sm in Model.SortedMenues)
+        {
+        <a href="#@sm.Category.Id" class="btn btn-warning">@sm.Category.Name кухня</a>
+        }
+    </div>
+
+
+    @foreach (SortedMenu sm in Model.SortedMenues)
+    {
+    <div class="dish-menu">
+        <br />
+        <p id="@sm.Category.Id" class="dish-category">@sm.Category.Name кухня</p>
+        @foreach (Dish dish in sm.Dishes.Select(s => s))
+        {
+        <div class="dish-block">
+            <p><text class="dish-head">@dish.Name</text></p>
+            <p><img src="~/Content/Dishes/@dish.ImagePath" class="dish-img" /></p>
+            <p><div class="dish-descr">@dish.Descriprion</div></p>
+            <p><div class="dish-cost">@dish.Cost ₽</div> <div class="btn btn-default dish-add" onclick="addDish(@dish.Id, @ViewBag.OrderId)">В заказ</div></p>
+        </div>
+        }
+    </div>
+    <div class="dish-end"></div>
+    }
+
+
+
+
+    <div class="dish-picked">
+        <div id="dish-pad">
+            @foreach (OrderContent oc in Model.OrderContents)
+            {
+            <p class="dish-position">
+                @oc.Dish.Name -- @oc.Dish.Cost ₽
+            </p>
+            }
+            <p></p>
+            <p class="dish-pad-cost" id="dish-pad-cost">Итого: @Model.Order.Summary ₽</p>
+        </div>
+        @Html.ActionLink("Закрыть заказ", "Close", new { orderId = ViewBag.OrderId }, new { @class = "btn btn-info" })
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Restaurant.Models.Shedule>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Резервация";
+}
+
+<h2>Резервация</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <b> Имя клиента </b>
+        </th>
+        <th>
+            <b> Дата резервации </b>
+        </th>
+        <th>
+            <b> Статус </b>
+        </th>
+        <th>
+            <b> Столик </b>
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @if (item.Accepted == true)
+            {
+                @:Воспользован
+                }
+                else
+                {
+                @:Открыт
+                }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Table.Id)
+        </td>
+        
+    </tr>
+}
+
+</table>

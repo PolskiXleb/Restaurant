@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Заказы", "Orders", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Блюда", "Dishes", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Категории", "Categories", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Столики", "Tables", null, new { @class = "btn btn-default" })

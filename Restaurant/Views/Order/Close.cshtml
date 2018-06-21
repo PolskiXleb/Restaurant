@@ -1,0 +1,39 @@
+﻿@using Restaurant.Models
+@model Order
+@{
+    ViewBag.Title = "Close";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Закрытие заказа</h2>
+
+
+<div class="order-close">
+    <h3 >Список заказа</h3>
+    <div class="paycheck">
+        
+
+        @foreach (OrderContent oc in Model.OrderContents)
+            {
+            <p class="text-paycheck btn-nice">
+                @oc.Dish.Name -- @oc.Dish.Cost ₽
+            </p>
+        }
+        <p></p>
+        <p class="dish-summary btn-nice">Итого: <text id="order-summary">@Model.Summary</text> ₽</p>
+
+    </div>
+    
+    <p></p>
+    <p>
+        <div class="text-nice"> Сумма клиента:</div> <input id="order-money" type="search" />
+        <button onclick="calculateChange()">Подсчитать сдачу</button>
+    </p>
+
+    <p id="order-change"></p>
+    @Html.ActionLink("Закрыть заказ", "Closing", new { orderId = Model.Id }, new { @class = "btn btn-info" })
+        
+
+</div>
+

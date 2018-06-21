@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Restaurant.Models.DishCategory>
+
+@{
+    ViewBag.Title = "Категории блюд";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Категории блюд</h2>
+
+<p>
+    @Html.ActionLink("Добавить новую", "CreateCategory", null, new { @class= "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Название
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "EditCategory", new { id=item.Id }, new { @class= "btn btn-default"})
+            @Html.ActionLink("Удалить", "DeleteCategory", new { id=item.Id }, new { @class= "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>

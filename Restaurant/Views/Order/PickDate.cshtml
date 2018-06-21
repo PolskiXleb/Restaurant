@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Введите дату";
+}
+
+<h2>Введите дату</h2>
+
+    <p>Дата резервации:</p>
+    <p class="text-danger" id="dateAlert"></p>
+    <input type="text" id="reserveDate" placeholder="Введите дату в формате гггг-мм-дд" class="form-control" />
+
+
+<p class="text-success" id="dateSuccess"></p>
+
+<button onclick="pickDate('@ViewBag.Today')" class="btn btn-info">Выбрать</button>

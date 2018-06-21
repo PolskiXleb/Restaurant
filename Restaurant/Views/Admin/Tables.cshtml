@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Restaurant.Models.Table>
+
+@{
+    ViewBag.Title = "Столики";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Столики</h2>
+
+<p>
+    @Html.ActionLink("Добавить столик", "CreateTable", null,  new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Номер
+        </th>
+        <th>
+            Статус
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @if(item.IsEmpty)
+                {
+                    @:Свободен
+                }
+                else
+                {
+                    @:Занят
+                }
+            </td>
+            
+        </tr>
+    }
+
+</table>

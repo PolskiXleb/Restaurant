@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5d0e1301c444a539daaa116f713a7a0" Name="Diagram1">
+        <EntityTypeShape EntityType="RestaurantModel.Dish" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.DishCategory" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Order" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderContent" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Shedule" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Table" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="RestaurantModel.FK__Dish__CategoryId__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK__OrderCont__DishI__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK__Order__TableId__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK__OrderCont__Order__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK__Shedule__TableId__1DE57479" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

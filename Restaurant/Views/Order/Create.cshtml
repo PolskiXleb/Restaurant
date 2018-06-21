@@ -1,0 +1,55 @@
+﻿@using Restaurant.Models
+@model IEnumerable<Table>
+@{    
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Регистрация клиента</h2>
+
+<p id="sucessAlert" class="text-success"></p>
+
+<div class="row">
+    @{
+
+        <div class="col-lg-2">
+            <p>Имя клиента:</p>
+            <p class="text-danger" id="nameAlert"></p>
+            <input type="text" id="clientName" placeholder="Введите имя клиента" class="form-control"/>
+        </div>
+
+        <div class="col-lg-1"></div>
+        <div class="col-lg-9">
+            <p>Номер столика: </p>
+            <p class="text-danger" id="tableAlert"></p>
+            @foreach (Table table in Model)
+            {
+                if (table.IsEmpty)
+                {
+            <button type="button" class="btn btn-default" id="@table.Id" onclick="chooseTable(@table.Id)">@table.Id</button>
+                }
+                else
+                {
+            <button type="button" class="btn btn" disabled='disabled'>@table.Id</button>
+                }
+            }
+
+        </div>
+
+
+    }
+</div>
+
+
+<div class="btn-nice">
+    
+        <input type="submit" onclick="addOrder()" value="Зарегестрировать посетителя" class="btn btn-info" />
+    
+</div>
+
+<div class="btn-nice">
+
+    @Html.ActionLink("К списку клиентов", "List", null, new { @class = "btn btn-info" })
+</div>
+
+

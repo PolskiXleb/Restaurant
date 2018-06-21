@@ -1,0 +1,15 @@
+﻿@using Restaurant.Models
+@model Order
+@{
+    ViewBag.Title = "ClosedSession";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Заказ закрыт</h2>
+
+<h1>Заказ @Model.ClientName успешно закрыт</h1>
+
+@Html.ActionLink("К списку клиентов", "List", null, new { @class = "btn btn-info" })
+
+

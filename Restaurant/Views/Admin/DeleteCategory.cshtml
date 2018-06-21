@@ -1,0 +1,48 @@
+﻿@model Restaurant.Models.DishCategory
+
+@{
+    ViewBag.Title = "Удаление категории";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Удаление категории</h2>
+
+@if (ViewBag.Error == null)
+{
+    <h3>Вы точно хотите удалить категорию?</h3>
+}
+else
+{
+    <h3 class="text-danger">@ViewBag.Error</h3>
+}
+    <div>
+        <h4>Категория</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <b class="control-label col-md-2"> Название </b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (ViewBag.Error == null)
+            {
+                <input type="submit" value="Удалить" class="btn btn-danger" />
+            }
+            else
+            {
+                <input type="submit" value="Удалить" class="btn btn-danger" disabled="disabled"/>
+            }
+            @Html.ActionLink("К списку категорий", "Categories", null, new { @class = "btn btn-default" })
+        </div>
+        }
+    </div>

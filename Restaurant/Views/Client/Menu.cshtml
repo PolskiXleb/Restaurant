@@ -1,0 +1,45 @@
+﻿@using Restaurant.Models
+@model ClientMenu
+@{
+    ViewBag.Title = "Меню";
+}
+
+<h2>Меню ресторана</h2>
+
+<div class="btn-group">
+    @foreach (DishCategory category in Model.Categories)
+    {
+        if (ViewBag.SelectedCategoryId == category.Id)
+        {
+            @Html.ActionLink(category.Name, "Menu", new { categoryId = category.Id }, new { @class = "btn btn-success" });
+
+        }
+        else
+        {
+            @Html.ActionLink(category.Name, "Menu", new { categoryId = category.Id }, new { @class = "btn btn-warning" });
+        }
+    }
+
+    @if (ViewBag.SelectedCategoryId == 0)
+    {
+        @Html.ActionLink("Полное меню", "Menu", null, new { @class = "btn btn-success" });
+    }
+    else
+    {
+        @Html.ActionLink("Полное меню", "Menu", null, new { @class = "btn btn-warning" });
+    }
+</div>
+
+    <br/>
+
+
+<br />
+    @foreach (Dish dish in Model.Dishes)
+    {
+        <div class="dish-block">
+            <p><text class="dish-head">@dish.Name</text></p>
+            <p><img src="~/Content/Dishes/@dish.ImagePath" class="dish-img" /></p>
+            <p><div class="dish-descr">@dish.Descriprion</div></p>
+            <p><div class="dish-cost">@dish.Cost ₽</div></p>
+        </div>
+    }

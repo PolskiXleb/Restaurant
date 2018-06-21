@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Restaurant.Models.Dish>
+
+@{
+    ViewBag.Title = "Блюда";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Блюда</h2>
+
+<p>
+    @Html.ActionLink("Добавить блюдо", "CreateDish", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <b>Название</b>
+        </th>
+        <th>
+            <b>Цена</b> 
+        </th>
+        <th>
+            <b>Описание</b>   
+        </th>
+        <th>
+            <b>Изображение</b>
+        </th>
+        <th>
+            <b>Кухня</b>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descriprion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DishCategory.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "EditDish", new { id=item.Id }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Удалить", "DeleteDish", new { id=item.Id }, new { @class = "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,31 @@
+﻿@using Restaurant.Models;
+@model Order
+
+@{
+    ViewBag.Title = "Заказ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h2>Заказ</h2>
+
+<div>
+    <p class="text-big btn-nice">Клиент:  @Model.ClientName</p>
+    <p class="text-nice btn-nice">Столик: @Model.TableId</p>
+    <p class="text-nice btn-nice">Время открытия: @Model.Time.Hours:@Model.Time.Minutes:@Model.Time.Seconds</p>
+
+    <div class="paycheck">
+        @foreach (OrderContent oc in Model.OrderContents)
+        {
+            <p class="text-paycheck btn-nice">
+                @oc.Dish.Name -- @oc.Dish.Cost ₽
+            </p>
+        }
+        <p></p>
+        <p class="dish-summary btn-nice">Итого: @Model.Summary ₽</p>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("К списку заказов", "Orders", null, new { @class = "btn btn-default" })
+</p>

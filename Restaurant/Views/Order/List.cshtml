@@ -1,0 +1,46 @@
+﻿@using Restaurant.Models
+@model ReserveAndOrder
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-4">
+        <h2>Список открытых заказов</h2>
+        @foreach (Order order in Model.Orders)
+        {
+
+            <div class="order-short">Столик @order.TableId | @Html.ActionLink("Подробнее", "Content", new { orderId = order.Id }, new { @class = "btn btn-primary" }) </div>
+
+        }
+    </div>
+
+    <div class="col-lg-8">
+        <h2>Список резерваций</h2>
+        @foreach (Shedule shedule in Model.Shedules)
+        {
+            if (Model.Orders.Any(s => s.TableId == shedule.TableId))
+            {
+                <div class="order-short">Резервация столика @shedule.TableId | @shedule.ClientName | @Html.ActionLink("Подтвердить резервацию", "AcceptReservation", new { sheduleId = shedule.Id }, new { @class = "btn btn-primary", @disabled = "true" }) </div>
+            }
+            else
+            {
+                <div class="order-short">Резервация столика @shedule.TableId | @shedule.ClientName | @Html.ActionLink("Подтвердить резервацию", "AcceptReservation", new { sheduleId = shedule.Id }, new { @class = "btn btn-primary" }) </div>
+            }
+        }
+    </div>
+    
+</div>                      
+
+<div class="row">
+    <div class="col-lg-4">
+
+        @Html.ActionLink("Зарегестрировать посетителя", "Create", null, new { @class = "btn btn-info" })
+    </div>
+
+    <div class="col-lg-8">
+        @Html.ActionLink("Зарезервировать столик", "PickDate", "Order", null, new { @class = "btn btn-info" })
+    </div>
+
+
+</div>
